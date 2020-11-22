@@ -1,5 +1,9 @@
 .nav-drawer {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     height: 100%;
     width: 250px;
     left: 0px;
