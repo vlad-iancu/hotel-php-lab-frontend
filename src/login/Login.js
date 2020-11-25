@@ -24,19 +24,22 @@ export default class Login extends React.Component {
         axios.post(`${BASE_URL}/login`, {
             email: this.state.loginData.email,
             password: this.state.loginData.password
-        }).then(response => {
-            let body = response.data;
-            if (body.status == "ok") {
-                localStorage.setItem("authToken", body.authToken);
-                localStorage.setItem("refreshToken", body.refreshToken);
-            }
-            this.setState((prevState, props) => ({
-                loginData: prevState.loginData,
-                registerData: prevState.registerData,
-                status: { message: body.message, status: body.status },
-                isLoading: false,
-            }))
         })
+            .then(response => {
+                let body = response.data;
+                if (body.status == "ok") {
+                    localStorage.setItem("authToken", body.authToken);
+                    localStorage.setItem("refreshToken", body.refreshToken);
+                }
+                this.setState((prevState, props) => ({
+                    loginData: prevState.loginData,
+                    registerData: prevState.registerData,
+                    status: { message: body.message, status: body.status },
+                    isLoading: false,
+                }))
+            }).catch(reason => {
+                this.setState({ isLoading: false })
+            })
     }
 
     register() {
@@ -50,19 +53,23 @@ export default class Login extends React.Component {
             user_name: this.state.registerData.userName,
             email: this.state.registerData.email,
             password: this.state.registerData.password
-        }).then(response => {
-            let body = response.data;
-            if (body.status == "ok") {
-                localStorage.setItem("authToken", body.authToken);
-                localStorage.setItem("refreshToken", body.refreshToken);
-            }
-            this.setState((prevState, props) => ({
-                loginData: prevState.loginData,
-                registerData: prevState.registerData,
-                status: { message: body.message, status: body.status },
-                isLoading: false,
-            }))
         })
+            .then(response => {
+                let body = response.data;
+                if (body.status == "ok") {
+                    localStorage.setItem("authToken", body.authToken);
+                    localStorage.setItem("refreshToken", body.refreshToken);
+                }
+                this.setState((prevState, props) => ({
+                    loginData: prevState.loginData,
+                    registerData: prevState.registerData,
+                    status: { message: body.message, status: body.status },
+                    isLoading: false,
+                }))
+            })
+            .catch(response => {
+                this.setState({ isLoading: false })
+            })
     }
 
     render() {

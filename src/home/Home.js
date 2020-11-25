@@ -28,6 +28,9 @@ export default function Home() {
                 setEmail(response.email)
             }
         })
+            .catch(reason => {
+                setAuthStatus(false)
+            })
     }, [])
     if (authStatus == false) {
         console.log("Login failed, going to login page")
@@ -43,6 +46,7 @@ export default function Home() {
             </div>
             <div>
                 {email}
+                {authStatus == false ? <Redirect to="login" /> : ""}
             </div>
         </div>
     )
