@@ -13,4 +13,4 @@ yarn-error.log*
 /.changelog
 .npm/
 yarn.lock
-config.js
+src/config.js
