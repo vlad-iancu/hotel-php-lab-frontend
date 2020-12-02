@@ -30,6 +30,7 @@ export default class Login extends React.Component {
                 if (body.status == "ok") {
                     localStorage.setItem("authToken", body.authToken);
                     localStorage.setItem("refreshToken", body.refreshToken);
+                    console.log(`Set the auth token to ${body.authToken}`);
                 }
                 this.setState((prevState, props) => ({
                     loginData: prevState.loginData,
@@ -59,6 +60,7 @@ export default class Login extends React.Component {
                 if (body.status == "ok") {
                     localStorage.setItem("authToken", body.authToken);
                     localStorage.setItem("refreshToken", body.refreshToken);
+                    console.log("Set the auth token");
                 }
                 this.setState((prevState, props) => ({
                     loginData: prevState.loginData,

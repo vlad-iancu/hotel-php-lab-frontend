@@ -1,0 +1,48 @@
+.search-box-container {
+    position: relative;
+    /* align-self: flex-start; */
+    margin-right: 20px;
+    align-self: center;
+}
+
+.search-box {
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    margin-top: 60px;
+    padding-left: 10px;
+    
+}
+
+.search-button {
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    margin-left: auto;
+    border-radius: 0;
+    height: 20px;
+    width: 20px;
+    background-image: url(/src/images/hotels/search.svg);
+    background-repeat: no-repeat;
+}
+
+.hotel-list {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex-grow: 1; */
+    margin-top: 5px;
+    align-self: stretch;
+    height: 200px;
+    margin-left: 15px;
+    overflow: scroll;
+}
+.hotel-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    padding-right: 50px;
+}

@@ -1,0 +1,28 @@
+.nav-list {
+    display: flex;
+    width: 100%;
+    height: 80%;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.nav-list-item {
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.nav-menu-item {
+    color: black;
+    transition: color 200ms ease-out 0s;
+    font-family: 'opensans_regular';
+}
+.nav-menu-item:hover {
+    color: rgb(45, 95, 225);
+    cursor: pointer;
+    
+}
+.nav-item-icon {
+    fill: red;
+}
