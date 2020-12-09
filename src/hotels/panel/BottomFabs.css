@@ -1,5 +1,5 @@
 .bottom-fabs-wrapper {
-    position: sticky;
+    position: fixed;
     bottom: 20px;
     right: 20px;
     height: 75px;
