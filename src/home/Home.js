@@ -3,9 +3,10 @@ import axios from 'axios'
 import { BASE_URL } from '../config'
 import './Home.css'
 import { Redirect, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom'
-import HotelPagedlList from '../hotels/HotePagedlList'
+import HotelPagedlList from '../hotels/HotelPagedlList'
 import NavList from './NavList'
 import hotelIcon from '../images/home/hotel.svg'
+import HotelPanel from '../hotels/panel/HotelPanel'
 
 const destinations = [
     { path: "/home/user_hotels", text: "Your hotels", icon: hotelIcon }
@@ -68,10 +69,13 @@ export default function Home() {
             <div className={contentClass}>
                 <Switch>
                     <Route exact path={path}>
-                        <span className="home-content">This is the default content of the home page, here will be the hotel list with a search bar</span>
+                        <span>This is the default content of the home page, here will be the hotel list with a search bar</span>
                     </Route>
                     <Route path={`${path}/user_hotels`}>
                         <HotelPagedlList url={`${BASE_URL}/user_hotels`} />
+                    </Route>
+                    <Route path={`${path}/hotel/:hotelId`}>
+                        <HotelPanel />
                     </Route>
                 </Switch>
             </div>

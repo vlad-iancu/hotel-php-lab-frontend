@@ -1,0 +1,80 @@
+.bottom-fabs-wrapper {
+    position: sticky;
+    bottom: 20px;
+    right: 20px;
+    height: 75px;
+}
+.bottom-fabs-container {
+    display: block;
+    position: absolute;
+    right: 5px;
+    height: 75px;
+   
+}
+.fab {
+    /* position: sticky;
+    display: inline-block;
+    bottom: 0;
+    right: 0;
+    margin-right: 10px; */
+    /*--delete on final--*/
+    width: 75px;
+    height: 75px;
+    border-radius: 40px;
+    margin-right: 30px;
+    box-shadow: 0px 0px 4px 2px rgba(210, 210, 210, 0.8);
+}
+
+.fab:nth-child(4) {
+    display: inline-block;
+    background-color: rgb(65, 105, 225);
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+.fab:nth-child(3) {
+    display: none;
+    transform: scale(0);
+    background-color: orange;
+}
+.fab:nth-child(2) {
+    display: none;
+    transform: scale(0);
+    background-color: red;
+
+}
+.fab:nth-child(1) {
+    display: none;
+    transform: scale(0);
+    background-color: yellow;
+}
+
+@keyframes reveal-fab {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+.bottom-fabs-container:hover .fab:nth-child(4) {
+    display: inline-block;
+    animation: reveal-fab 100ms ease-out 0ms reverse;
+    transform: scale(0);
+}
+.bottom-fabs-container:hover .fab:nth-child(3) {
+    display: inline-block;
+    animation: reveal-fab 250ms ease-out 125ms backwards;
+    transform: scale(1);
+}
+.bottom-fabs-container:hover .fab:nth-child(2) {
+    display: inline-block;
+    animation: reveal-fab 250ms ease-out 250ms backwards;
+    transform: scale(1);
+}
+.bottom-fabs-container:hover .fab:nth-child(1) {
+    display: inline-block;
+    animation: reveal-fab 250ms ease-out 375ms backwards;
+    transform: scale(1);
+}

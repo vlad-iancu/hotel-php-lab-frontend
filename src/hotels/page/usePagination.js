@@ -1,13 +1,14 @@
 import Axios from 'axios';
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-export default function useHotelPagination(url, q, pageSize) {
+export default function usePagination(url, q, pageSize, params = {}, getItems) {
     let [isLoading, setLoading] = useState(false);
     let [error, setError] = useState(false);
-    let [hotels, setHotels] = useState([])
+    let [items, setItems] = useState([])
     let [query, setQuery] = useState(q)
     let [pageCount, setPageCount] = useState();
-    let [page, setPage] = useState(1)
+    let [page, setPage] = useState(1);
+    let [hasMore, setHasMore] = useState(true);
 
     useEffect(() => {
         setPage(1)
@@ -17,24 +18,25 @@ export default function useHotelPagination(url, q, pageSize) {
         setLoading(true);
         let cancelToken = axios.CancelToken;
         let source = cancelToken.source()
+        params.q = query
+        params.page = page
+        params.pageSize = pageSize
         axios.get(url, {
             headers: {
                 Authorization: "token " + localStorage.getItem("authToken")
             },
-            params: {
-                q: query,
-                page: page,
-                pageSize: pageSize
-            },
+            params: params,
             cancelToken: source.token
         })
             .then(result => {
                 let body = result.data
-                setHotels(body.hotels);
+                setItems(getItems(result.data));
                 setPageCount(body.pages);
                 setLoading(false)
                 setError(body.status != "ok");
-                console.log("User hotel request succeded")
+                setHasMore(body.hasMore);
+                console.log("Finished requesting page " + page)
+                console.log(getItems(result.data))
             })
             .catch(reason => {
                 setLoading(false);
@@ -47,6 +49,6 @@ export default function useHotelPagination(url, q, pageSize) {
 
     }, [q, page, query])
 
-    return [hotels, query, setQuery, page, setPage, pageCount, isLoading, error];
+    return [items, hasMore, query, setQuery, page, setPage, pageCount, isLoading, error];
 
 }
