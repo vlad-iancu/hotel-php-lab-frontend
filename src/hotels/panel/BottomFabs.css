@@ -5,8 +5,11 @@
     height: 75px;
 }
 .bottom-fabs-container {
-    display: block;
+    display: flex;
     position: absolute;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     right: 5px;
     height: 75px;
    
